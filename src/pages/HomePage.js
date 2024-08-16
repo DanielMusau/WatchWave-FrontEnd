@@ -2,17 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import { getLatestMovies, getLatestTVShows, addFavorite } from '../services/api';
 import MovieCard from '../components/MovieCard';
-import TVShowCard from '../components/TVshowCard'
+import TVShowCard from '../components/TVshowCard';
+import './HomePage.css'; // Import the CSS file
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [tvShows, setTVShows] = useState([]);
 
   useEffect(() => {
-    getLatestMovies().then(response => setMovies(response.data));
-    getLatestTVShows().then(response => setTVShows(response.data));
+    getLatestMovies().then(response => setMovies(response.data.results));
+    getLatestTVShows().then(response => setTVShows(response.data.results));
   }, []);
-
+  
   const handleAddFavorite = (itemId) => {
     const userId = 1; // Assuming the user is logged in and has an ID of 1
     addFavorite(userId, itemId).then(() => {

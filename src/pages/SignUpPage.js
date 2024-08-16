@@ -19,7 +19,7 @@ const SignUpPage = () => {
     }
 
     try {
-      const response = await axios.post('/api/signup', { username, email, password });
+      await axios.post('/api/signup', { username, email, password });
       alert('Registration successful! Please sign in.');
       navigate('/signin');
     } catch (error) {

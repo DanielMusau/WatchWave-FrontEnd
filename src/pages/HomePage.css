@@ -1,0 +1,12 @@
+/* src/pages/HomePage.css */
+.trending-movies, .trending-tvshows {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust minmax for card size */
+    gap: 1rem; /* Adjust spacing between cards */
+  }
+  
+  .movie-card img, .tvshow-card img {
+    width: 100%;
+    height: auto;
+  }
+  
