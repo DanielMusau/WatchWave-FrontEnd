@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getLatestMovies, getLatestTVShows, addFavorite } from '../services/api';
 import MovieCard from '../components/MovieCard';
 import TVShowCard from '../components/TVshowCard';
+import NavBar from '../components/NavBar'; // Import NavBar component
 import './HomePage.css'; // Import the CSS file
 
 const HomePage = () => {
@@ -23,6 +24,7 @@ const HomePage = () => {
 
   return (
     <div>
+      <NavBar /> {/* Add the NavBar component */}
       <h1>Trending Movies</h1>
       <div className="trending-movies">
         {movies.map(movie => (
