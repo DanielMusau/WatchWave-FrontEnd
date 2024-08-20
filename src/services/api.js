@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://watch-wave.azurewebsites.net/api';
+const API_URL = ' http://127.0.0.1:5000/api';
 
 const token = localStorage.getItem('jwtToken');
 
