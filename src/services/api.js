@@ -16,3 +16,10 @@ export const addFavorite = (userId, itemId) => axios.post(`${API_URL}/add-to-wat
   { userId, itemId },
   { headers: { Authorization: `Bearer ${token}` } }
 );
+
+export const searchMoviesAndTVShows = (query) => {
+  return axios.get(`${API_URL}/home/search`, {
+    params: { query },
+    headers: { Authorization: `Bearer ${token}` } 
+  });
+};

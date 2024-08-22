@@ -1,46 +1,40 @@
-/* src/components/MovieCard.css */
-.movie-card {
+/* src/pages/SearchResultsPage.css */
+.search-results {
+  padding: 20px;
+}
+
+.results-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the cards */
+}
+
+.search-result-card {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Same shadow as movie cards */
   overflow: hidden;
   width: 100%; /* Ensures the card takes up the full width of its container */
   max-width: 200px; /* Adjust as needed */
+  margin: 10px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   cursor: pointer; /* Indicate that the card is clickable */
 }
 
-.movie-card img {
-  width: 100%;
-  height: auto;
-}
-
-.movie-card h3 {
-  font-size: 1rem;
-  margin: 0.5rem 0;
-  color: #333;
-}
-
-/* Add a hover effect to the card */
-.movie-card:hover {
+.search-result-card:hover {
   transform: scale(1.05); /* Slightly enlarge the card */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
   background-color: #f8f9fa; /* Change background color on hover */
 }
 
-.movie-card button {
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  margin-bottom: 0.5rem;
-  transition: background-color 0.3s ease;
+.search-result-card img {
+  width: 100%;
+  height: auto;
 }
 
-.movie-card button:hover {
-  background-color: #0056b3;
+.search-result-card h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #333;
 }

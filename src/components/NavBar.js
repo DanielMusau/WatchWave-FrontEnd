@@ -1,13 +1,38 @@
-// src/components/NavBar.js
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './NavBar.css'; // Import the CSS file for styling
+import { Link, useNavigate } from 'react-router-dom';
+import { searchMoviesAndTVShows } from '../services/api';
+import './NavBar.css';
 
 const NavBar = () => {
   const [isWatchlistVisible, setWatchlistVisible] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const navigate = useNavigate();
 
   const toggleWatchlist = () => {
     setWatchlistVisible(!isWatchlistVisible);
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleKeyDown = async (e) => {
+    if (e.key === 'Enter') {
+      if (inputValue.trim()) {
+        try {
+          const response = await searchMoviesAndTVShows(inputValue);
+          navigate('/search-results', { 
+            state: { 
+              results: response.data.results,
+              query: inputValue
+            },
+            search: `?query=${encodeURIComponent(inputValue)}`
+          });
+        } catch (error) {
+          console.error('Error fetching search results:', error);
+        }
+      }
+    }
   };
 
   return (
@@ -16,7 +41,13 @@ const NavBar = () => {
         <Link to="/">Watch Wave</Link>
       </div>
       <div className="navbar-search">
-        <input type="text" placeholder="Search..." />
+        <input
+          type="text"
+          placeholder="Search..."
+          value={inputValue}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+        />
       </div>
       <div className="navbar-profile">
         <button onClick={toggleWatchlist} className="profile-icon">
@@ -25,7 +56,6 @@ const NavBar = () => {
         {isWatchlistVisible && (
           <div className="watchlist-dropdown">
             <h3>Watchlist</h3>
-            {/* Here you can add code to display the watchlist items */}
             <p>No items in watchlist</p>
           </div>
         )}

@@ -1,45 +1,113 @@
-/* src/components/NavBar.css */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .navbar-logo a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5rem;
-  }
-  
-  .navbar-search input {
-    padding: 5px;
-    border: none;
-    border-radius: 4px;
-  }
-  
-  .navbar-profile {
-    position: relative;
-  }
-  
-  .profile-icon {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .watchlist-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px;
-    width: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
+  background-color: #2c3e50;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo a {
+  color: #ecf0f1;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-logo a:hover {
+  color: #bdc3c7;
+}
+
+.navbar-search {
+  position: relative;
+  flex-grow: 0; /* Change this to 0 to prevent it from growing */
+  width: 300px; /* Set a fixed width for the search bar */
+  margin: 0 20px;
+}
+
+.navbar-search input {
+  width: 100%; /* Keep this as 100% so it fits within the specified width */
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid #bdc3c7;
+  outline: none;
+  font-size: 16px;
+  background-color: #34495e;
+  color: white;
+}
+
+.navbar-search input::placeholder {
+  color: #bdc3c7;
+}
+
+.search-results-dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.search-results-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-results-dropdown li {
+  padding: 10px;
+  cursor: pointer;
+  background-color: white;
+  color: #2c3e50;
+}
+
+.search-results-dropdown li:hover {
+  background-color: #ecf0f1;
+}
+
+.navbar-profile {
+  position: relative;
+}
+
+.profile-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.profile-icon img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.watchlist-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  padding: 10px;
+}
+
+.watchlist-dropdown h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #2c3e50;
+}
+
+.watchlist-dropdown p {
+  margin: 0;
+  font-size: 14px;
+  color: #7f8c8d;
+}
