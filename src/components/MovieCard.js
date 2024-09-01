@@ -1,9 +1,9 @@
 // src/components/MovieCard.js
 import React, { useState } from 'react';
-import './MovieCard.css'; // Import CSS file for styling
-import Modal from './Modal'; // Import the Modal component
+import './MovieCard.css';
+import Modal from './Modal';
 
-const MovieCard = ({ movie, onAddFavorite }) => {
+const MovieCard = ({ movie }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleCardClick = () => {
@@ -24,7 +24,7 @@ const MovieCard = ({ movie, onAddFavorite }) => {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         movie={movie}
-        onAddFavorite={onAddFavorite}
+        type="movie"
       />
     </div>
   );

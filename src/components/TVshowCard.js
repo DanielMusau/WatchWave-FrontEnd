@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './MovieCard.css'; // Reuse styling from MovieCard.css
 import Modal from './Modal'; // Reuse the Modal component
 
-const TVShowCard = ({ tvShow, onAddFavorite }) => {
+const TVShowCard = ({ tvShow }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleCardClick = () => {
@@ -24,7 +24,7 @@ const TVShowCard = ({ tvShow, onAddFavorite }) => {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         movie={tvShow} // Reusing movie prop for TV show
-        onAddFavorite={onAddFavorite}
+        type="tv" // Set type as "tv" for TV shows
       />
     </div>
   );

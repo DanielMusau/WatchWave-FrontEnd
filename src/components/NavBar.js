@@ -4,12 +4,12 @@ import { searchMoviesAndTVShows } from '../services/api';
 import './NavBar.css';
 
 const NavBar = () => {
-  const [isWatchlistVisible, setWatchlistVisible] = useState(false);
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
 
-  const toggleWatchlist = () => {
-    setWatchlistVisible(!isWatchlistVisible);
+  const toggleDropdown = () => {
+    setDropdownVisible(!isDropdownVisible);
   };
 
   const handleInputChange = (e) => {
@@ -35,6 +35,11 @@ const NavBar = () => {
     }
   };
 
+  const handleWatchlistClick = () => {
+    navigate('/watchlist');
+    setDropdownVisible(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -50,13 +55,13 @@ const NavBar = () => {
         />
       </div>
       <div className="navbar-profile">
-        <button onClick={toggleWatchlist} className="profile-icon">
+        <button onClick={toggleDropdown} className="profile-icon">
           <img src="/path-to-profile-icon.png" alt="Profile" />
         </button>
-        {isWatchlistVisible && (
-          <div className="watchlist-dropdown">
-            <h3>Watchlist</h3>
-            <p>No items in watchlist</p>
+        {isDropdownVisible && (
+          <div className="profile-dropdown">
+            <button onClick={handleWatchlistClick}>My Watchlist</button>
+            {/* Add other dropdown items if needed */}
           </div>
         )}
       </div>

@@ -1,4 +1,3 @@
-// src/pages/HomePage.js
 import React, { useEffect, useState } from 'react';
 import { getLatestMovies, getLatestTVShows } from '../services/api';
 import MovieCard from '../components/MovieCard';
