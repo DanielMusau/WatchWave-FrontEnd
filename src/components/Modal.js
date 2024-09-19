@@ -2,8 +2,7 @@ import React from 'react';
 import { addToWatchlist, removeFromWatchlist } from '../services/api';
 import './Modal.css';
 
-const Modal = ({ isOpen, onClose, movie, type }) => {
-  console.log('Movie:', movie);
+const Modal = ({ isOpen, onClose, movie, showDeleteButton, type, onRemoveSuccess }) => {
   if (!isOpen) return null;
 
   const handleAddToWatchlist = async () => {
@@ -25,6 +24,8 @@ const Modal = ({ isOpen, onClose, movie, type }) => {
       const response = await removeFromWatchlist(movie.id);
       if (response.status === 200) {
         alert('Removed from watchlist!');
+        if (onRemoveSuccess) onRemoveSuccess(); // Call the callback on success
+        onClose()
       } else {
         alert('Failed to remove from watchlist.');
       }
@@ -41,8 +42,12 @@ const Modal = ({ isOpen, onClose, movie, type }) => {
         <h2>{movie.title || movie.name}</h2>
         <img src={`https://image.tmdb.org/t/p/w342/${movie.backdrop_path || movie.poster_path}`} alt={movie.title || movie.name} />
         <p>{movie.overview}</p>
-        <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
-        <button onClick={handleRemoveFromWatchlist}>Remove from Watchlist</button>
+        {!showDeleteButton && (
+          <button onClick={handleAddToWatchlist}>Add to Watchlist</button>
+        )}
+        {showDeleteButton && (
+          <button onClick={handleRemoveFromWatchlist}>Remove from Watchlist</button>
+        )}
       </div>
     </div>
   );

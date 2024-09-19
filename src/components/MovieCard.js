@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './MovieCard.css';
 import Modal from './Modal';
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, showDeleteButton = false, onRemoveSuccess }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleCardClick = () => {
@@ -24,7 +24,9 @@ const MovieCard = ({ movie }) => {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         movie={movie}
+        showDeleteButton={showDeleteButton}
         type="movie"
+        onRemoveSuccess={onRemoveSuccess}
       />
     </div>
   );

@@ -1,17 +1,21 @@
+/* General navbar styles */
 .navbar {
   background-color: #2c3e50;
-  padding: 10px 20px;
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
   font-family: 'Arial', sans-serif;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 100;
 }
 
+/* Logo styles */
 .navbar-logo a {
   color: #ecf0f1;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
   text-decoration: none;
 }
@@ -20,38 +24,45 @@
   color: #bdc3c7;
 }
 
+/* Search bar styles */
 .navbar-search {
   position: relative;
-  flex-grow: 0; /* Change this to 0 to prevent it from growing */
-  width: 300px; /* Set a fixed width for the search bar */
+  flex-grow: 1;
+  max-width: 500px; /* Set a max width for responsiveness */
   margin: 0 20px;
 }
 
 .navbar-search input {
-  width: 100%; /* Keep this as 100% so it fits within the specified width */
-  padding: 8px 15px;
-  border-radius: 20px;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 25px;
   border: 1px solid #bdc3c7;
   outline: none;
   font-size: 16px;
   background-color: #34495e;
   color: white;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.navbar-search input:focus {
+  background-color: #2c3e50;
+  border: 1px solid #ecf0f1;
 }
 
 .navbar-search input::placeholder {
   color: #bdc3c7;
 }
 
+/* Dropdown for search results */
 .search-results-dropdown {
   position: absolute;
-  top: 40px;
+  top: 50px;
   left: 0;
   right: 0;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   z-index: 1000;
-  overflow: hidden;
 }
 
 .search-results-dropdown ul {
@@ -61,53 +72,89 @@
 }
 
 .search-results-dropdown li {
-  padding: 10px;
+  padding: 12px 20px;
   cursor: pointer;
   background-color: white;
   color: #2c3e50;
+  transition: background-color 0.3s ease;
 }
 
 .search-results-dropdown li:hover {
   background-color: #ecf0f1;
 }
 
-.navbar-profile {
+/* Hamburger menu */
+.navbar-hamburger {
   position: relative;
 }
 
-.profile-icon {
+.hamburger-icon {
   background: none;
   border: none;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
   padding: 0;
-  outline: none;
 }
 
-.profile-icon img {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: #ecf0f1;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
 }
 
-.watchlist-dropdown {
+.hamburger-icon:hover .hamburger-line {
+  background-color: #bdc3c7;
+}
+
+/* Hamburger dropdown menu */
+.hamburger-dropdown {
   position: absolute;
   top: 50px;
   right: 0;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   width: 200px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
 }
 
-.watchlist-dropdown h3 {
-  margin: 0 0 10px 0;
-  font-size: 18px;
+.hamburger-dropdown button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px 15px;
   color: #2c3e50;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.watchlist-dropdown p {
-  margin: 0;
-  font-size: 14px;
-  color: #7f8c8d;
+.hamburger-dropdown button:hover {
+  background-color: #ecf0f1;
+  color: #34495e;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .navbar-search {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-hamburger {
+    align-self: flex-end;
+  }
 }

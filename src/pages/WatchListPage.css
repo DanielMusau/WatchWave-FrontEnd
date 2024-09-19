@@ -1,0 +1,21 @@
+.watch-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust minmax for card size */
+  gap: 1rem; /* Adjust spacing between cards */
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+}
+
+/* Prevent overflow on any parent container */
+.watch-list {
+  position: relative;
+  overflow: visible;
+}
+
+/* Also, ensure body allows overflow when the modal is open */
+body.modal-open {
+  overflow: hidden;
+}

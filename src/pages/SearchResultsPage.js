@@ -10,7 +10,6 @@ const placeholderImage = 'https://via.placeholder.com/200x300?text=No+Image';
 const SearchResultsPage = () => {
   const location = useLocation();
   const { results, query } = location.state || {};
-  console.log('results:', results);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 

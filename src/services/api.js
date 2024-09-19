@@ -25,18 +25,21 @@ export const getWatchlist = () => axios.get(`${API_URL}/watchlist`, {
 
 // Add new API functions
 export const addToWatchlist = (movie, type) => {
+  console.log('movie:', movie);
+  console.log('type:', type);
   return axios.post(`${API_URL}/add-to-watchlist`, {
     title: movie.title || movie.name,
     external_id: movie.id, 
     poster_path: movie.poster_path,
     type: type, 
+    overview: movie.overview
   }, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };
 
 export const removeFromWatchlist = (watchlistId) => {
-  return axios.delete(`${API_URL}/watchlist/${watchlistId}`, {
+  return axios.delete(`${API_URL}/remove-from-watchlist/${watchlistId}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };

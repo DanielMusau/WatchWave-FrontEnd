@@ -54,12 +54,15 @@ const NavBar = () => {
           onKeyDown={handleKeyDown}
         />
       </div>
-      <div className="navbar-profile">
-        <button onClick={toggleDropdown} className="profile-icon">
-          <img src="/path-to-profile-icon.png" alt="Profile" />
+      <div className="navbar-hamburger">
+        <button onClick={toggleDropdown} className="hamburger-icon">
+          {/* Three horizontal lines for hamburger menu */}
+          <div className="hamburger-line"></div>
+          <div className="hamburger-line"></div>
+          <div className="hamburger-line"></div>
         </button>
         {isDropdownVisible && (
-          <div className="profile-dropdown">
+          <div className="hamburger-dropdown">
             <button onClick={handleWatchlistClick}>My Watchlist</button>
             {/* Add other dropdown items if needed */}
           </div>
