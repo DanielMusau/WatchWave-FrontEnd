@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Modal from '../components/Modal';
-import './SearchResultsPage.css';
+import './styles/SearchResultsPage.css';
 
 const placeholderImage = 'https://via.placeholder.com/200x300?text=No+Image';
 

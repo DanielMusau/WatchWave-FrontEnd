@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { searchMoviesAndTVShows } from '../services/api';
-import './NavBar.css';
+import './styles/NavBar.css';
 
 const NavBar = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -40,6 +40,15 @@ const NavBar = () => {
     setDropdownVisible(false);
   };
 
+
+  const handleLogout = () => {
+    localStorage.removeItem('jwtToken');
+
+    navigate('/signin');
+
+    setDropdownVisible(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -64,6 +73,7 @@ const NavBar = () => {
         {isDropdownVisible && (
           <div className="hamburger-dropdown">
             <button onClick={handleWatchlistClick}>My Watchlist</button>
+            <button onClick={handleLogout}>Logout</button>
             {/* Add other dropdown items if needed */}
           </div>
         )}

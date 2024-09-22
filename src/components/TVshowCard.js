@@ -1,7 +1,7 @@
 // src/components/TVShowCard.js
 import React, { useState } from 'react';
-import './MovieCard.css'; // Reuse styling from MovieCard.css
-import Modal from './Modal'; // Reuse the Modal component
+import './styles/MovieCard.css';
+import Modal from './Modal';
 
 const TVShowCard = ({ tvShow }) => {
   const [isModalOpen, setModalOpen] = useState(false);

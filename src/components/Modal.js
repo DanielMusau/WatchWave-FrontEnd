@@ -1,6 +1,6 @@
 import React from 'react';
 import { addToWatchlist, removeFromWatchlist } from '../services/api';
-import './Modal.css';
+import './styles/Modal.css';
 
 const Modal = ({ isOpen, onClose, movie, showDeleteButton, type, onRemoveSuccess }) => {
   if (!isOpen) return null;

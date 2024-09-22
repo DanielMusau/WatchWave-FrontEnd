@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getWatchlist } from "../services/api";
 import MovieCard from "../components/MovieCard";
 import NavBar from "../components/NavBar";
-import "./WatchListPage.css";
+import "./styles/WatchListPage.css";
 
 const WatchListPage = () => {
   const [watchList, setWatchList] = useState([]);

@@ -3,7 +3,7 @@ import { getLatestMovies, getLatestTVShows } from '../services/api';
 import MovieCard from '../components/MovieCard';
 import TVShowCard from '../components/TVshowCard';
 import NavBar from '../components/NavBar'; 
-import './HomePage.css'; 
+import './styles/HomePage.css'; 
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);

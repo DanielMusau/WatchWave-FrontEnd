@@ -1,6 +1,6 @@
 // src/components/MovieCard.js
 import React, { useState } from 'react';
-import './MovieCard.css';
+import './styles/MovieCard.css';
 import Modal from './Modal';
 
 const MovieCard = ({ movie, showDeleteButton = false, onRemoveSuccess }) => {

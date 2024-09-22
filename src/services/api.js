@@ -1,45 +1,54 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:5000/api';
+const API_URL = 'https://watchwave-43z2.onrender.com/api';
 
-const token = localStorage.getItem('jwtToken');
-
-export const getLatestMovies = () => axios.get(`${API_URL}/home/latest-movies`, {
-  headers: { Authorization: `Bearer ${token}` }
+// Create an Axios instance
+const apiClient = axios.create({
+  baseURL: API_URL,
 });
 
-export const getLatestTVShows = () => axios.get(`${API_URL}/home/latest-series`, {
-  headers: { Authorization: `Bearer ${token}` }
+// Axios interceptor to attach the token dynamically for every request
+apiClient.interceptors.request.use((config) => {
+  const token = localStorage.getItem('jwtToken');
+  if (token) {
+    config.headers['Authorization'] = `Bearer ${token}`;
+  }
+  return config;
+}, (error) => {
+  return Promise.reject(error);
 });
+
+// API functions using the Axios instance
+export const getLatestMovies = () => {
+  return apiClient.get('/home/latest-movies');
+};
+
+export const getLatestTVShows = () => {
+  return apiClient.get('/home/latest-series');
+};
 
 export const searchMoviesAndTVShows = (query) => {
-  return axios.get(`${API_URL}/home/search`, {
+  return apiClient.get('/home/search', {
     params: { query },
-    headers: { Authorization: `Bearer ${token}` } 
   });
 };
 
-export const getWatchlist = () => axios.get(`${API_URL}/watchlist`, {
-  headers: { Authorization: `Bearer ${token}` }
-});
+export const getWatchlist = () => {
+  return apiClient.get('/watchlist');
+};
 
-// Add new API functions
 export const addToWatchlist = (movie, type) => {
-  console.log('movie:', movie);
-  console.log('type:', type);
-  return axios.post(`${API_URL}/add-to-watchlist`, {
+  return apiClient.post('/add-to-watchlist', {
     title: movie.title || movie.name,
-    external_id: movie.id, 
+    external_id: movie.id,
     poster_path: movie.poster_path,
-    type: type, 
+    type: type,
     overview: movie.overview
-  }, {
-    headers: { Authorization: `Bearer ${token}` }
   });
 };
 
 export const removeFromWatchlist = (watchlistId) => {
-  return axios.delete(`${API_URL}/remove-from-watchlist/${watchlistId}`, {
-    headers: { Authorization: `Bearer ${token}` }
-  });
+  return apiClient.delete(`/remove-from-watchlist/${watchlistId}`);
 };
+
+export default apiClient;
