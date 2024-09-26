@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { signup } from '../services/api';  // Assume you add a signup function in the API file
 import './styles/SignUpPage.css';
 
 const SignUpPage = () => {
@@ -15,16 +15,16 @@ const SignUpPage = () => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError('Passwords do not match');
       return;
     }
 
     try {
-      await axios.post('/api/signup', { username, email, password });
+      const response = await signup(username, email, password);  // Make the API call
+      console.log(`Response: ${response.data}`);
       alert('Registration successful! Please sign in.');
       navigate('/signin');
     } catch (error) {
-      console.error("Error during sign up:", error);
       setError('Sign up failed. Please try again.');
     }
   };
@@ -77,7 +77,9 @@ const SignUpPage = () => {
           </div>
           <button type="submit" className="signup-button">Sign Up</button>
         </form>
-        <p className="signin-prompt">Already have an account? <a href="/signin" className="signin-link">Sign in</a></p>
+        <p className="signin-prompt">
+          Already have an account? <a href="/signin" className="signin-link">Sign in</a>
+        </p>
       </div>
     </div>
   );

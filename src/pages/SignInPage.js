@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { login } from '../services/api';  
 import './styles/SignInPage.css';
 
 const SignInPage = () => {
@@ -13,7 +13,8 @@ const SignInPage = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('/api/login', { email, password });
+      const response = await login(email, password); 
+      console.log(`Response: ${response.data}`);
       const { token } = response.data;
       
       localStorage.setItem('jwtToken', token);

@@ -18,6 +18,14 @@ apiClient.interceptors.request.use((config) => {
   return Promise.reject(error);
 });
 
+export const signup = (username, email, password) => {
+  return apiClient.post('/signup', { username, email, password });
+}
+
+export const login = (email, password) => {
+  return apiClient.post('/login', { email, password });
+};
+
 // API functions using the Axios instance
 export const getLatestMovies = () => {
   return apiClient.get('/home/latest-movies');
